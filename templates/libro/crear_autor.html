@@ -7,9 +7,12 @@
     <title>Creación de autor</title>
 </head>
 <body>
+    <!--Cuando se carga la pagina es un metodo GET-->
     <form method="POST">
+        <!-- middleware csrf_ -->
+        {% csrf_token %}
         <!-- Pintamos como parrafo -->
-        {{autor_form.as_p}}
+        {{autor_form.as_p}} <!--as_table-->
         <button type="submit">Crear</button>
     </form>
 </body>
