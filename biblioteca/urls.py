@@ -14,8 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include #con include se pueden añadir archivos de las apps
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('libro/',include('libro.urls'))
+    #se debe crear el archivo url en el  app y con esta linea lo enrutamos
+    path('libro/',include(('apps.libro.urls','libro')))
+
 ]
