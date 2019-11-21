@@ -55,7 +55,7 @@ ROOT_URLCONF = 'biblioteca.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],#carpeta en la que se buscan los templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
