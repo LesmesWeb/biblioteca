@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include #con include se pueden añadir archivos de las apps
-
+from apps.libro.views import Home
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('libro/',include('libro.urls'))
     #se debe crear el archivo url en el  app y con esta linea lo enrutamos
-    path('libro/',include(('apps.libro.urls','libro')))
-
+    path('libro/',include(('apps.libro.urls','libro'))),
+    path('home/', Home, name='index'),
 ]

@@ -1,4 +1,4 @@
-from django import form
+from django import forms
 #cuando se encuentra el archivo dentro de la carpeta se llama con el . 
 from .models import Autor
 
