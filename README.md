@@ -39,3 +39,22 @@ git push origin master
 PostgreSQL
 psql -U postgresql -d biblioteca
 \d #listo las tablas
+
+Consultas
+ORM: Capa de abstración de sintaxis propia de framework
+Consultas:
+python manage.py shell
+
+*objects se encarga de realizar la petición a la base de datos
+
+#Insertar datos opcion1:
+Autor.objects.create(nombre="prueba1", apellidos = "apellido2",nacionalidad="Costa Rica",descripcion="descrip 2") --insert into Autor(nombre,apellidos,nacionalidad,descripcion) values("prueba1","apellido2","Costa Rica","descrip 2")
+#Insertar datos opcion2:
+data = Autor(nombre="prueba1", apellidos = "apellido2",nacionalidad="Costa Rica",descripcion="descrip 2")
+data.save()
+
+#seleccionar datos:
+Autor.objects.all() -- select * from Autor
+Autor.objects.filter(nacionalidad="Peru") -- select * from Autor where nacionalidad == "Peru"
+Autor.objects.get(id=9) #get trae un solo registro pero sino ubica mas de uno o no existe pondra error
+Autor.objects.filter(nacionalidad="Peru",id=8) -- select * from Autor where nacionalidad  like 'Peru' and id ==8
