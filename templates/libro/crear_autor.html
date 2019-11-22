@@ -2,17 +2,16 @@
 {%extends 'index.html'%}
 
 <!-- Cambiar el HTML-->
-{% block titulo %}
-    Creación de Autores
-{% endblock titulo %}
+{% block titulo %} Creación de Autores {% endblock titulo %}
 
 <!--Cuando se carga la pagina es un metodo GET-->
 {% block body %}
 <form method="POST">
-        <!-- middleware csrf_ -->
-        {% csrf_token %}
-        <!-- Pintamos como parrafo -->
-        {{autor_form.as_p}} <!--as_table-->
-        <button type="submit">Crear</button>
-    </form>
+    <!-- middleware csrf_ -->
+    {% csrf_token %}
+    <!-- Pintamos como parrafo -->
+    {{autor_form.as_p}}
+    <!--as_table-->
+    <button type="submit">Crear</button>
+</form>
 {% endblock body %}

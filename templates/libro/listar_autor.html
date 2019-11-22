@@ -1,34 +1,27 @@
-{% extends 'index.html' %}
-{% block titulo %}
-    Lista de Autores
-{% endblock titulo %}
-
-{% block body %}
-    {% if autores %}
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Nacionalidad</th>
-                <th>Descripción</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for autor in autores %}
-            <tr>
-                <td> {{autor.id}} </td>
-                <td> {{autor.nombre}} </td>
-                <td> {{autor.apellidos}} </td>
-                <td> {{autor.nacionalidad}} </td>
-                <td> {{autor.descripcion}} </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-     <h1>No existen autores registrados</h1>
-    {% endif %}
-    
-{% endblock body %}
+{% extends 'index.html' %} {% block titulo %} Lista de Autores {% endblock
+titulo %} {% block body %} {% if autores %}
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Nacionalidad</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for autor in autores %}
+        <tr>
+            <td>{{autor.id}}</td>
+            <td>{{autor.nombre}}</td>
+            <td>{{autor.apellidos}}</td>
+            <td>{{autor.nacionalidad}}</td>
+            <td>{{autor.descripcion}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h1>No existen autores registrados</h1>
+{% endif %} {% endblock body %}
