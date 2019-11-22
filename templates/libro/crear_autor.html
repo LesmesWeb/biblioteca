@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Creación de autor</title>
-</head>
-<body>
-    <form method="POST">
+<!-- hereda todo del archivo index.html-->
+{%extends 'index.html'%}
+
+<!-- Cambiar el HTML-->
+{% block titulo %}
+    Creación de Autores
+{% endblock titulo %}
+
+<!--Cuando se carga la pagina es un metodo GET-->
+{% block body %}
+<form method="POST">
+        <!-- middleware csrf_ -->
+        {% csrf_token %}
         <!-- Pintamos como parrafo -->
-        {{autor_form.as_p}}
+        {{autor_form.as_p}} <!--as_table-->
         <button type="submit">Crear</button>
     </form>
-</body>
-</html>
+{% endblock body %}
