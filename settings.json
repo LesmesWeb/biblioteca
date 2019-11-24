@@ -18,7 +18,7 @@ file --> preferences --> settings --> text Editor --> Code Actions On Save --> E
 ------------------- Multiple Selection :https: //code.visualstudio.com/docs/editor/codebasics
 ctrl + Shift + alt + up : selecciona campos desde el teclado
 shift + alt :seleccionar con el mouse los campos
-
+ctrl + d :selecciona los mismo elementos
 */
 {
   "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
