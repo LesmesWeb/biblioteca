@@ -1,5 +1,7 @@
-{% extends 'index.html' %} {% block titulo %} Lista de Autores {% endblock
-titulo %} {% block body %} {% if autores %}
+{% extends 'index.html' %}
+{% block titulo %} Lista de Autores {% endblock titulo %}
+{% block body %}
+{% if autores %}
 <table>
     <thead>
         <tr>
@@ -24,4 +26,5 @@ titulo %} {% block body %} {% if autores %}
 </table>
 {% else %}
 <h1>No existen autores registrados</h1>
-{% endif %} {% endblock body %}
+{% endif %}
+{% endblock body %}
