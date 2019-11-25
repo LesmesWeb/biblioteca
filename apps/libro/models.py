@@ -8,6 +8,7 @@ class Autor(models.Model):
     apellidos = models.CharField('Apellidos',max_length=200, blank=False,null=False)
     nacionalidad = models.CharField('Nacionalidad',max_length=50,blank=False,null=False)
     descripcion = models.TextField('Descripción',blank=False,null=False)
+    estado = models.BooleanField('Estado', default=True)
     fecha_creacion = models.DateField('Fecha de creación', auto_now = True,auto_now_add=False)
 
     #usamos los metadatos

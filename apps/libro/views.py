@@ -26,7 +26,7 @@ def crearAutor(request):
 
 
 def listarAutor(request):
-    autores = Autor.objects.all()
+    autores = Autor.objects.filter(estado=True)
     return render(request, 'libro/listar_autor.html', {'autores': autores})
 
 
@@ -50,3 +50,28 @@ def editarAutor(request, id):
         error = e
 
     return render(request, 'libro/crear_autor.html', {'autor_form': autor_form, 'error': error})
+
+#Eliminación Directa sin template
+#def eliminarAutor(request, id):
+#    autor = Autor.objects.get(id = id)
+#    autor.delete()
+#    return redirect('libro:listar_autor')
+
+
+#Eliminación Directa por POST
+#def eliminarAutor(request, id):
+#    autor = Autor.objects.get(id = id)
+#    if request.method == 'POST':
+#        autor.delete()
+#        return redirect('libro:listar_autor')
+#    return render(request,'libro/eliminar_autor.html',{'autor':autor})
+
+#Eliminación Logica: oculta de la vista del cliente con un estado (añadimos en el modelo de autor estado)
+def eliminarAutor(request, id):
+    autor = Autor.objects.get(id = id)
+    if request.method == 'POST':
+        autor.estado = False
+        autor.save()
+        return redirect('libro:listar_autor')
+    return render(request,'libro/eliminar_autor.html',{'autor':autor})
+

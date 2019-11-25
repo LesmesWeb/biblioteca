@@ -1,0 +1,19 @@
+<!-- hereda todo del archivo index.html-->
+{%extends 'index.html'%}
+
+<!-- Cambiar el HTML-->
+{% block titulo %} Eliminación de Autor {% endblock titulo %}
+
+<!--Cuando se carga la pagina es un metodo GET-->
+{% block body %}
+<form method="POST">
+    <!-- middleware csrf_ -->
+    {% csrf_token %}
+
+    <h2>¿Desea eliminar el registro de: <strong> {{autor.nombre}} </strong> ?</h2>
+
+    <button type="submit">Eliminar</button>
+    <a href="{% url 'libro:listar_autor' %}">Cancelar</a>
+
+</form>
+{% endblock body %}

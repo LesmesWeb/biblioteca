@@ -25,6 +25,9 @@
                 <!-- hacemos un llamado al nombre que tiene la url que llamala función con su id-->
                 <a href="{% url 'libro:editar_autor' autor.id %}">Editar</a>
             </td>
+            <td>
+                <a href="{% url 'libro:eliminar_autor' autor.id %}"> Eliminar </a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
