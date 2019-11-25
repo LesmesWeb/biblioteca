@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+# libreria para capturar errores
+from django.core.exceptions import ObjectDoesNotExist
 from .forms import AutorForm
 from .models import Autor
 # Create your views here.
@@ -29,13 +31,22 @@ def listarAutor(request):
 
 
 def editarAutor(request, id):
-    # con get solo traemos el unico dato que encuentre de la base de datos
-    autor = Autor.objects.get(id=id)
-    if request.method == 'GET':
-        autor_form = AutorForm(instance=autor)
-    else:
-        autor_form = AutorForm(request.POST, instance=autor)
-        if autor_form.is_valid():
-            autor_form.save()
-        return redirect('index')
-    return render(request, 'libro/crear_autor.html', {'autor_form': autor_form})
+    # declaramos el formulario para que muestre el error de try
+    autor_form = None
+    error = None
+    # se creara un try cash con el proposito de solucionar el error del get cuando no existe el ID
+    try:
+        # con get solo traemos el unico dato que encuentre de la base de datos
+        autor = Autor.objects.get(id=id)
+        if request.method == 'GET':
+            autor_form = AutorForm(instance=autor)
+        else:
+            autor_form = AutorForm(request.POST, instance=autor)
+            if autor_form.is_valid():
+                autor_form.save()
+            return redirect('index')
+    # Para capturar la excepción se debe importar la libreria ObjectDoesNotExist
+    except ObjectDoesNotExist as e:
+        error = e
+
+    return render(request, 'libro/crear_autor.html', {'autor_form': autor_form, 'error': error})

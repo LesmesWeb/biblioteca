@@ -10,6 +10,7 @@
             <th>Apellidos</th>
             <th>Nacionalidad</th>
             <th>Descripción</th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,10 @@
             <td>{{autor.apellidos}}</td>
             <td>{{autor.nacionalidad}}</td>
             <td>{{autor.descripcion}}</td>
+            <td>
+                <!-- hacemos un llamado al nombre que tiene la url que llamala función con su id-->
+                <a href="{% url 'libro:editar_autor' autor.id %}">Editar</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>

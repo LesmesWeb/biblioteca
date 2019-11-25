@@ -9,9 +9,16 @@
 <form method="POST">
     <!-- middleware csrf_ -->
     {% csrf_token %}
+    <!-- validación de los errores con django-->
+    {% if error %}
+    <h2>{{error}}</h2>
+    {% else %}
     <!-- Pintamos como parrafo -->
     {{autor_form.as_p}}
-    <!--as_table-->
     <button type="submit">Crear</button>
+    <!--as_table-->
+    {% endif %}
+
+
 </form>
 {% endblock body %}
