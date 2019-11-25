@@ -10,18 +10,36 @@ from .models import Autor
 def Home(request):
     return render(request, 'index.html')
 
-
+#Crear el registro de un Autor desde el forms.py requiere que en el template sean los mismos nombres
 def crearAutor(request):
     if request.method == 'POST':
-        autor_form = AutorForm(request.POST)
-        if autor_form.is_valid():
+        print(request.POST) # la salida es: <QueryDict: {'csrfmiddlewaretoken': ['#####'], 'nombre': ['1'], 'apellidos': ['2'], 'nacionalidad': ['3'], 'descripcion': ['4']}>
+        autor_form = AutorForm(request.POST) #recibe los valores en el mismo orden en el que esten en el archivos forms.py
+        if autor_form.is_valid(): #django guarda con valid los datos en cleaned_data
+            nom = autor_form.cleaned_data['nombre']
+            print("nom ",nom)
             autor_form.save()
-            return redirect('index')
+            return redirect('libro:listar_autor')
+            #return redirect('index')
     else:
         autor_form = AutorForm()
 
-    return render(request, 'libro/crear_autor.html', {'autor_form': autor_form})
+    return render(request, 'libro/crear_autor.html',{'autor_form': autor_form})
 
+#Crear el registro de un Autor recibiendo los datos desde el template y los nombres pueden cambiar
+#def crearAutor(request):
+#    if request.method == 'POST':
+#        print(request.POST) # la salida es: <QueryDict: {'csrfmiddlewaretoken': ['#####'], 'nombre': ['1'], 'apellidos': ['2'], 'nacionalidad': ['3'], 'descripcion': ['4']}>
+#        nom = request.POST.get('nombre')
+#        ape = request.POST.get('apellidos')
+#        nacio = request.POST.get('nacionalidad')
+#        desc = request.POST.get('descripcion')
+#        print(nom,ape,nacio,desc)
+#        autor = Autor(nombre=nom, apellidos=ape, nacionalidad=nacio, descripcion=desc)
+#        autor.save()
+#        return redirect('libro:listar_autor')
+#    return render(request, 'libro/crear_autor.html')
+#
 # Vistas basadas en funciones
 
 

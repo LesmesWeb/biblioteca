@@ -13,8 +13,25 @@
     {% if error %}
     <h2>{{error}}</h2>
     {% else %}
-    <!-- Pintamos como parrafo -->
-    {{autor_form.as_p}}
+
+    <!-- crearAutor pasando los valores uno por uno -->
+
+    <label>Nombres</label>
+    <input type="text" name="nombre">
+
+    <label>Apellidos</label>
+    <input type="text" name=apellidos>
+
+    <label>Nacionalidad</label>
+    <input type="text" name=nacionalidad>
+
+    <label>Descripción</label>
+    <input type="text" name=descripcion>
+
+
+    <!-- Pintamos como parrafo 
+    {{autor_form.as_p}} -->
+
     <button type="submit">Crear</button>
     <!--as_table-->
     {% endif %}
